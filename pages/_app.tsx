@@ -1,0 +1,62 @@
+import { useEffect } from 'react';
+import { AppContext, AppInitialProps, AppProps } from 'next/app';
+import { NextComponentType, NextPageContext } from 'next';
+
+import DynamicTheme from '@/constants/themes/DynamicTheme';
+import Meta from '@/modules/meta/Meta';
+import '../styles/globals.css';
+
+export interface IPageContext extends NextPageContext {
+  isServer: boolean;
+  userAgent: string;
+}
+
+const AppComponent: NextComponentType<
+  AppContext,
+  AppInitialProps,
+  AppProps
+> = ({ Component, pageProps }) => {
+  useEffect(()=> {
+    if("serviceWorker" in navigator) {
+      window.addEventListener("load", function () {
+       navigator.serviceWorker.register("/sw.js").then(
+          function (registration) {
+            console.log("Service Worker registration successful with scope: ", registration.scope);
+          },
+          function (err) {
+            console.log("Service Worker registration failed: ", err);
+          }
+        );
+      });
+    }
+}, [])
+
+  return (
+    <DynamicTheme>
+      <Meta />
+      <Component {...pageProps} />
+    </DynamicTheme>
+  )
+}
+
+AppComponent.getInitialProps = async (appContext) => {
+  const { Component, ctx } = appContext as AppContext & { ctx: IPageContext };
+  const { req, res } = ctx;
+  let pageProps = {};
+
+  const isServer = typeof window === 'undefined';
+  const userAgent = req ? req.headers['user-agent'] : navigator.userAgent;
+
+  ctx.isServer = isServer;
+  ctx.userAgent = userAgent;
+
+  if (Component.getInitialProps) {
+    pageProps = await Component.getInitialProps(ctx);
+  }
+
+  return {
+    pageProps,
+  }
+}
+
+export default AppComponent;
