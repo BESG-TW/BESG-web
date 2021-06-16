@@ -39,24 +39,4 @@ const AppComponent: NextComponentType<
   )
 }
 
-AppComponent.getInitialProps = async (appContext) => {
-  const { Component, ctx } = appContext as AppContext & { ctx: IPageContext };
-  const { req, res } = ctx;
-  let pageProps = {};
-
-  const isServer = typeof window === 'undefined';
-  const userAgent = req ? req.headers['user-agent'] : navigator.userAgent;
-
-  ctx.isServer = isServer;
-  ctx.userAgent = userAgent;
-
-  if (Component.getInitialProps) {
-    pageProps = await Component.getInitialProps(ctx);
-  }
-
-  return {
-    pageProps,
-  }
-}
-
 export default AppComponent;

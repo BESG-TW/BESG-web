@@ -1,24 +1,34 @@
 import {
   ThemeProvider,
   createGlobalStyle,
+  DefaultTheme,
 } from 'styled-components';
 
 import { PropsWithChildren } from 'react';
 
-import themes from './index';
+import themes, { ThemeName } from './index';
 
 const GlobalStyle = createGlobalStyle`
   body {
-
+    background: black;
   }
 `;
 
 const DynamicTheme = ({
+  activeTheme = ThemeName.BESG,
   children,
-}: PropsWithChildren<{}>) => {
+}: PropsWithChildren<{ activeTheme?: ThemeName }>) => {
+
+  const { colors, ...otherThemes } = themes;
+  const activeColor = colors[activeTheme];
+  const color = {
+    ...colors[ThemeName.BESG].common,
+    ...activeColor.common,
+  };
+  const theme: DefaultTheme = { ...color };
 
   return (
-    <ThemeProvider theme={themes}>
+    <ThemeProvider theme={theme}>
       <>
         <GlobalStyle />
         {children}
