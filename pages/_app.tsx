@@ -4,18 +4,13 @@ import { NextComponentType, NextPageContext } from 'next';
 
 import DynamicTheme from '@/constants/themes/DynamicTheme';
 import Meta from '@/modules/meta/Meta';
-import '../styles/globals.css';
-
-export interface IPageContext extends NextPageContext {
-  isServer: boolean;
-  userAgent: string;
-}
 
 const AppComponent: NextComponentType<
   AppContext,
   AppInitialProps,
   AppProps
 > = ({ Component, pageProps }) => {
+
   useEffect(()=> {
     if("serviceWorker" in navigator) {
       window.addEventListener("load", function () {

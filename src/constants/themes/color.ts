@@ -1,6 +1,7 @@
 export default {
   common: {
-    backgroundBlack: '#1d1f1e',
+    backgroundWhite: 'white',
+    backgroundBlack: 'black',
     red: 'red'
   },
 };

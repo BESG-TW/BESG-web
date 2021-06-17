@@ -1,18 +1,19 @@
 import styled from 'styled-components';
 
+import PlanetSection from '@/modules/home/PlanetSection';
+
 export default function Home() {
 
   return (
     <Wrapper>
-      
-      test
+      <PlanetSection />
     </Wrapper>
   )
 }
 
 const Wrapper = styled.div`
   min-height: 100vh;
-  padding: 0 0.5rem;
+  padding: 0 0;
   display: flex;
   flex-direction: column;
   justify-content: center;

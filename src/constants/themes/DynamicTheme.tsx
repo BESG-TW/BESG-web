@@ -18,14 +18,14 @@ const DynamicTheme = ({
   activeTheme = ThemeName.BESG,
   children,
 }: PropsWithChildren<{ activeTheme?: ThemeName }>) => {
-
   const { colors, ...otherThemes } = themes;
+  const awdProps = otherThemes.web;
   const activeColor = colors[activeTheme];
   const color = {
     ...colors[ThemeName.BESG].common,
     ...activeColor.common,
   };
-  const theme: DefaultTheme = { ...color };
+  const theme: DefaultTheme = { ...color, ...awdProps };
 
   return (
     <ThemeProvider theme={theme}>
