@@ -1,43 +1,8 @@
 import React from 'react';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import { motion } from 'framer-motion';
 
-const fadeLeft = {
-  hidden: { opacity: 0, x: -100 },
-  visible: { opacity: 1, x: 0 }
-};
-
-const buttonHover = {
-  hover: {
-    scale: 1.05,
-    color: '#000000',
-    backgroundColor: '#ffffff',
-    transition: {
-      duration: 0.2
-    }
-  }
-}
-
-const planetVariant = {
-  hover: {
-    scale: 1.07,
-    cursor: 'pointer',
-    transition: {
-      duration: 0.7,
-      yoyo: Infinity
-    }
-  },
-  initial: {
-    opacity: 1,
-    x: 0
-  },
-  rotateLeft: {
-    rotate: -360, cursor: 'pointer', transition: { duration: 32, loop: Infinity, ease: 'linear' }
-  },
-  rotateRight: {
-    rotate: 360, cursor: 'pointer', transition: { duration: 20, loop: Infinity, ease: 'linear' }
-  }
-}
+import { fadeLeft, buttonHover, planetVariant } from './PlanetVariants';
 
 const PlanetSection: React.FC = () => {
 
@@ -50,7 +15,7 @@ const PlanetSection: React.FC = () => {
             animate={{ opacity: 1 }}
             transition={{ duration: 1 }}
           >
-            Web 技術線上分享會
+            Web 線上技術分享會
           </motion.h1>
           <motion.h3
             initial={{ opacity: 0 }}
@@ -156,11 +121,8 @@ const Container = styled.div`
   height: 90vh;
   padding: 3rem calc((100vw - 1300px) / 2);
 
-  @media screen and (max-width: 768px) {
+  ${props => props.theme.tablet`
     grid-grid-template-columns: 1fr;
-  }
-  ${props => props.theme.mobileS && css`
-    
   `}
 `;
 

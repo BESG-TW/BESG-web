@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import PlanetSection from '@/modules/home/PlanetSection';
+import PlanetSection from '@/modules/home/PlanetSection/PlanetSection';
 
 export default function Home() {
 
