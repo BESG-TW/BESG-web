@@ -11,6 +11,7 @@ import themes, { ThemeName } from './index';
 const GlobalStyle = createGlobalStyle`
   body {
     background: black;
+    margin: 0;
   }
 `;
 

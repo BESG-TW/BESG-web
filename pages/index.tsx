@@ -13,7 +13,7 @@ export default function Home() {
 
 const Wrapper = styled.div`
   min-height: 100vh;
-  padding: 0 0;
+  padding: 0;
   display: flex;
   flex-direction: column;
   justify-content: center;

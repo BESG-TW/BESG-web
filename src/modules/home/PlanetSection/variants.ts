@@ -3,9 +3,13 @@ export const fadeLeft = {
   visible: { opacity: 1, x: 0 }
 };
 
+export const fadeIn = {
+  hidden: { opacity: 0 },
+  visible: { opacity: 1, transition: { duration: 1 }}
+}
+
 export const buttonHover = {
   hover: {
-    scale: 1.05,
     color: '#000000',
     backgroundColor: '#ffffff',
     transition: {

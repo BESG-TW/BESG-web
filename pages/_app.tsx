@@ -1,9 +1,10 @@
 import { useEffect } from 'react';
 import { AppContext, AppInitialProps, AppProps } from 'next/app';
-import { NextComponentType, NextPageContext } from 'next';
+import { NextComponentType } from 'next';
 
 import DynamicTheme from '@/constants/themes/DynamicTheme';
 import Meta from '@/modules/meta/Meta';
+import Header from '@/modules/components/Header/Header';
 
 const AppComponent: NextComponentType<
   AppContext,
@@ -29,6 +30,7 @@ const AppComponent: NextComponentType<
   return (
     <DynamicTheme>
       <Meta />
+      <Header />
       <Component {...pageProps} />
     </DynamicTheme>
   )

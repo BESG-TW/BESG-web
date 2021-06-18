@@ -2,7 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 
-import { fadeLeft, buttonHover, planetVariant } from './PlanetVariants';
+import { fadeLeft, buttonHover, planetVariant, fadeIn } from './variants';
+import { DISCORD_INVITATION_LINK } from '@/constants';
 
 const PlanetSection: React.FC = () => {
 
@@ -11,48 +12,54 @@ const PlanetSection: React.FC = () => {
       <Container>
         <ColumnLeft>
           <motion.h1
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 1 }}
+            variants={fadeIn}
+            initial='hidden'
+            animate='visible'
           >
             Web 線上技術分享會
           </motion.h1>
           <motion.h3
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 1 }}
+            variants={fadeIn}
+            initial='hidden'
+            animate='visible'
           >
             每週精彩的線上技術分享，主題包含 Web 前後端
             、雲端架構、DevOps，其中以後端工程技術為主，讓我們用技術轉動世界。
           </motion.h3>
           <motion.h3
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 1 }}
+            variants={fadeIn}
+            initial='hidden'
+            animate='visible'
           >
             每週六 9:30 PM @Discord
           </motion.h3>
-          <motion.p
-            variants={fadeLeft}
-            initial='hidden'
-            animate='visible'
-            transition={{ duration: 1 }}
-          >
-            {`BESG </>`}
-          </motion.p>
+          <TitleWrapper>
+            <motion.p
+              variants={fadeLeft}
+              initial='hidden'
+              animate='visible'
+              transition={{ duration: 1 }}
+            >
+              BESG
+            </motion.p>
+            <Logo 
+              src='/besg.png'
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 1 }}/>
+          </TitleWrapper>
           <Button
             variants={buttonHover}
             whileHover='hover'
             whileTap={{
-              scale: 0.95,
-              backgroundColor: '#67F6E7',
-              border: 'none',
               color: '#000'
             }}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1, transition: { duration: 1.5 } }}
+            href={DISCORD_INVITATION_LINK}
+            target='_blank'
           >
-            Join Our Discord ☺️
+            Join Our Discord 🚀
           </Button>
         </ColumnLeft>
         <ColumnRight>
@@ -113,6 +120,7 @@ const Section = styled.section`
   align-items: center;
   border-radius: 15px;
   background: ${props => props.theme.backgroundBlack};
+  margin-top: 30px;
 `;
 
 const Container = styled.div`
@@ -146,15 +154,17 @@ const ColumnLeft = styled.div`
   }
 `;
 
-const Button = styled(motion.button)`
+const Button = styled(motion.a)`
   padding: 1rem 3rem;
-  font-size: 1rem;
-  border: 2px solid #fff;
+  font-size: 1.1rem;
+  border: 2px solid ${props => props.theme.backgroundWhite};
   border-radius: 4px;
   outline: none;
   cursor: pointer;
   background: transparent;
-  color: #fff;
+  color: ${props => props.theme.backgroundWhite};
+  text-decoration: none;
+  font-weight: 500;
 `;
 
 const Image = styled(motion.img)`
@@ -195,5 +205,15 @@ const ColumnRight = styled.div`
     z-index: 3;
   }
 `;
+
+const TitleWrapper = styled.div`
+  display: flex;
+  align-items: center;
+`
+
+const Logo = styled(motion.img)`
+  width: 70px;
+  height: 70px;
+`
 
 export default PlanetSection;
