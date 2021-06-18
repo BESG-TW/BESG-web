@@ -9,14 +9,8 @@ const Colors = {
   [ThemeName.BESG]: BESGColors,
 };
 
-const AWDProps = {
-  web: {
-    ...MediaQueries,
-  },
-};
-
 const Theme = {
-  ...AWDProps,
+  ...MediaQueries,
   colors: Colors
 }
 
