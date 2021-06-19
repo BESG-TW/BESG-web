@@ -20,4 +20,5 @@ const Wrapper = styled.div`
   align-items: center;
   height: 100vh;
   color: ${props => props.theme.red};
+  overflow: hidden;
 `

@@ -4,13 +4,16 @@ import { NextComponentType } from 'next';
 
 import DynamicTheme from '@/constants/themes/DynamicTheme';
 import Meta from '@/modules/meta/Meta';
-import Header from '@/modules/components/Header/Header';
+import DesktopHeader from '@/modules/components/Header/DesktopHeader';
+import MobileHeader from '@/modules/components/Header/MobileHeader';
+import useWindowSize from '@/hooks/useWindowSize';
 
 const AppComponent: NextComponentType<
   AppContext,
   AppInitialProps,
   AppProps
 > = ({ Component, pageProps }) => {
+  const { width } = useWindowSize();
 
   useEffect(()=> {
     if("serviceWorker" in navigator) {
@@ -30,7 +33,7 @@ const AppComponent: NextComponentType<
   return (
     <DynamicTheme>
       <Meta />
-      <Header />
+      {width > 768 ? <DesktopHeader /> : <MobileHeader />}
       <Component {...pageProps} />
     </DynamicTheme>
   )

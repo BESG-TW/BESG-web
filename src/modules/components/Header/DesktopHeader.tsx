@@ -5,7 +5,7 @@ import Link from 'next/link';
 
 import { buttonHover } from '@/modules/home/PlanetSection/variants';
 
-const Header: React.FC = () => {
+const DesktopHeader: React.FC = () => {
 
   return (
     <Container>
@@ -59,7 +59,6 @@ const Logo = styled.img`
   width: 90px;
   height: 90px;
   cursor: pointer;
-  
 `
 
 const LinkWrapper = styled.div`
@@ -80,4 +79,4 @@ const LinkItem = styled(motion.div)`
   height: 60%;
 `
 
-export default Header;
+export default DesktopHeader;
