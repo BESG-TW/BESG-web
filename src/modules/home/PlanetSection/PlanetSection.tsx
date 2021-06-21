@@ -140,7 +140,7 @@ const ColumnLeft = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
-  padding: 5rem 2rem;
+  padding: 5rem 2rem 5rem 5rem;
 
   h1 {
     margin-bottom: 0.5rem;
@@ -209,11 +209,11 @@ const ColumnRight = styled.div`
 const TitleWrapper = styled.div`
   display: flex;
   align-items: center;
-`
+`;
 
 const Logo = styled(motion.img)`
   width: 70px;
   height: 70px;
-`
+`;
 
 export default PlanetSection;

@@ -54,20 +54,20 @@ const Container = styled.div`
   align-items: center;
   justify-content: space-between;
   padding: 25px 50px 0 50px;
-`
+`;
+
 const Logo = styled.img`
   width: 90px;
   height: 90px;
   cursor: pointer;
-`
+`;
 
 const LinkWrapper = styled.div`
   display: flex;
   height: 100%;
   margin-right: 150px;
   align-items: center;
-  
-`
+`;
 
 const LinkItem = styled(motion.div)`
   display: flex;
@@ -77,6 +77,6 @@ const LinkItem = styled(motion.div)`
   margin-left: 10px;
   border-radius: 20px;
   height: 60%;
-`
+`;
 
 export default DesktopHeader;

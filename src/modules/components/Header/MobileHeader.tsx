@@ -1,20 +1,35 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
-import Image from 'next/image';
 
-import { buttonHover } from '@/modules/home/PlanetSection/variants';
 
 const MobileHeader: React.FC = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <Container>
-      <Link href='/'>
-        <Logo src='/besg.png'/>
-      </Link>
-      <StyledImage src='/menu.jpeg' alt='menu' width={50} height={50} />
-    </Container>
+    <>
+      <Container>
+        <Link href='/'>
+          <Logo src='/besg.png'/>
+        </Link>
+        <div onClick={() => setIsMenuOpen(true)}>
+          <StyledImage src='/menu.jpeg' alt='menu' width={50} height={50} />
+        </div>
+      </Container>
+      <AnimatePresence>
+        {isMenuOpen && (
+          <MenuContainer initial={{ left: '100vw'}} animate={{ left: 0 }} exit={{ left: '100vw' }}>
+            <MenuToggleBtn onClick={() => setIsMenuOpen(false)}>X</MenuToggleBtn>
+            <MenuItemsWrapper>
+              <MenuItem>本週 Session</MenuItem>
+              <MenuItem>分享列表</MenuItem>
+              <MenuItem>聯絡我們</MenuItem>
+            </MenuItemsWrapper>
+          </MenuContainer>
+        )}
+      </AnimatePresence>
+    </>
   );
 };
 
@@ -30,19 +45,51 @@ const Container = styled.div`
   justify-content: space-between;
   padding: 10px -10px 0 10px;
   overflow: hidden;
-`
+`;
+
 const Logo = styled.img`
   width: 59px;
   height: 59px;
   cursor: pointer;
-  margin-left: 10px;
-`
+  margin-left: 20px;
+`;
 
 const StyledImage = styled.img`
   width: 50px;
   width: 50px;
   cursor: pointer;
-  margin-right: 10px;
-`
+  margin-right: -20px;
+`;
+
+const MenuContainer = styled(motion.div)`
+  display: flex;
+  position: fixed;
+  z-index: 99;
+`;
+
+const MenuToggleBtn = styled.div`
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: ${props => props.theme.backgroundBlack};
+  background: ${props => props.theme.backgroundWhite};
+  cursor: pointer;
+  font-size: 24px;
+  font-weight: 800;
+`;
+
+const MenuItemsWrapper = styled.div`
+  width: calc(100vw-50px);
+  height: 100vh;
+  background: #2e2c2c;
+`;
+
+const MenuItem = styled.div`
+  width: 100vw;
+  height: 70px;
+  background: green;
+`;
 
 export default MobileHeader;
