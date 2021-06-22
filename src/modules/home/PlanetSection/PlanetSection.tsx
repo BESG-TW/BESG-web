@@ -153,6 +153,11 @@ const Button = styled(motion.a)`
   color: ${(props) => props.theme.backgroundWhite};
   text-decoration: none;
   font-weight: 500;
+
+  ${(props) => props.theme.tablet`
+    padding: 1rem 1rem;
+    font-size: 1rem;
+  `}
 `;
 
 const Image = styled(motion.img)`

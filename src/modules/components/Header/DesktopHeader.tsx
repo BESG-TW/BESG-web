@@ -7,7 +7,7 @@ import { buttonHover } from '@/modules/home/PlanetSection/variants';
 
 const DesktopHeader: React.FC = () => {
   return (
-    <Container>
+    <DesktopContainer>
       <Link href="/">
         <Logo src="/besg.png" />
       </Link>
@@ -46,11 +46,11 @@ const DesktopHeader: React.FC = () => {
           </LinkItem>
         </Link>
       </LinkWrapper>
-    </Container>
+    </DesktopContainer>
   );
 };
 
-const Container = styled.div`
+const DesktopContainer = styled.div`
   position: fixed;
   top: 0;
   width: 100%;
