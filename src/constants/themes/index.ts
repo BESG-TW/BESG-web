@@ -11,8 +11,8 @@ const Colors = {
 
 const Theme = {
   ...MediaQueries,
-  colors: Colors
-}
+  colors: Colors,
+};
 
 export { ThemeName };
 

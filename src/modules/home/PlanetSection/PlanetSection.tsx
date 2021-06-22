@@ -6,58 +6,46 @@ import { fadeLeft, buttonHover, planetVariant, fadeIn } from './variants';
 import { DISCORD_INVITATION_LINK } from '@/constants';
 
 const PlanetSection: React.FC = () => {
-
   return (
     <Section>
       <Container>
         <ColumnLeft>
-          <motion.h1
-            variants={fadeIn}
-            initial='hidden'
-            animate='visible'
-          >
+          <motion.h1 variants={fadeIn} initial="hidden" animate="visible">
             Web 線上技術分享會
           </motion.h1>
-          <motion.h3
-            variants={fadeIn}
-            initial='hidden'
-            animate='visible'
-          >
+          <motion.h3 variants={fadeIn} initial="hidden" animate="visible">
             每週精彩的線上技術分享，主題包含 Web 前後端
             、雲端架構、DevOps，其中以後端工程技術為主，讓我們用技術轉動世界。
           </motion.h3>
-          <motion.h3
-            variants={fadeIn}
-            initial='hidden'
-            animate='visible'
-          >
+          <motion.h3 variants={fadeIn} initial="hidden" animate="visible">
             每週六 9:30 PM @Discord
           </motion.h3>
           <TitleWrapper>
             <motion.p
               variants={fadeLeft}
-              initial='hidden'
-              animate='visible'
+              initial="hidden"
+              animate="visible"
               transition={{ duration: 1 }}
             >
               BESG
             </motion.p>
-            <Logo 
-              src='/besg.png'
+            <Logo
+              src="/besg.png"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ duration: 1 }}/>
+              transition={{ duration: 1 }}
+            />
           </TitleWrapper>
           <Button
             variants={buttonHover}
-            whileHover='hover'
+            whileHover="hover"
             whileTap={{
-              color: '#000'
+              color: '#000',
             }}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1, transition: { duration: 1.5 } }}
             href={DISCORD_INVITATION_LINK}
-            target='_blank'
+            target="_blank"
           >
             Join Our Discord 🚀
           </Button>
@@ -65,47 +53,47 @@ const PlanetSection: React.FC = () => {
         <ColumnRight>
           <Image
             src={'/planet.svg'}
-            alt='planet'
+            alt="planet"
             whileTap={{ scale: 0.9 }}
             drag={true}
             dragConstraints={{ left: 0, right: 250, top: 0, bottom: 50 }}
-            initial='initial'
-            animate='rotateLeft'
+            initial="initial"
+            animate="rotateLeft"
             variants={planetVariant}
-            whileHover='hover'
+            whileHover="hover"
           />
           <Image
             src={'/planet-2.svg'}
-            alt='planet'
+            alt="planet"
             whileTap={{ scale: 0.6 }}
             drag={true}
             dragConstraints={{ left: -200, right: 0, top: 0, bottom: 50 }}
-            initial='initial'
-            animate='rotateRight'
+            initial="initial"
+            animate="rotateRight"
             variants={planetVariant}
-            whileHover='hover'
+            whileHover="hover"
           />
           <Image
             src={'/planet-3.svg'}
-            alt='planet'
+            alt="planet"
             whileTap={{ scale: 0.8 }}
             drag={true}
             dragConstraints={{ left: -30, right: 250, top: 0, bottom: 50 }}
-            initial='initial'
-            animate='rotateRight'
+            initial="initial"
+            animate="rotateRight"
             variants={planetVariant}
-            whileHover='hover'
+            whileHover="hover"
           />
           <Image
             src={'/planet-4.svg'}
-            alt='planet'
+            alt="planet"
             whileTap={{ scale: 0.9 }}
             drag={true}
             dragConstraints={{ left: -100, right: 0, top: 0, bottom: 0 }}
-            initial='initial'
-            animate='rotateLeft'
+            initial="initial"
+            animate="rotateLeft"
             variants={planetVariant}
-            whileHover='hover'
+            whileHover="hover"
           />
         </ColumnRight>
       </Container>
@@ -119,7 +107,7 @@ const Section = styled.section`
   justify-content: center;
   align-items: center;
   border-radius: 15px;
-  background: ${props => props.theme.backgroundBlack};
+  background: ${(props) => props.theme.backgroundBlack};
   margin-top: 30px;
 `;
 
@@ -129,7 +117,7 @@ const Container = styled.div`
   height: 90vh;
   padding: 3rem calc((100vw - 1300px) / 2);
 
-  ${props => props.theme.tablet`
+  ${(props) => props.theme.tablet`
     grid-grid-template-columns: 1fr;
   `}
 `;
@@ -157,12 +145,12 @@ const ColumnLeft = styled.div`
 const Button = styled(motion.a)`
   padding: 1rem 3rem;
   font-size: 1.1rem;
-  border: 2px solid ${props => props.theme.backgroundWhite};
+  border: 2px solid ${(props) => props.theme.backgroundWhite};
   border-radius: 4px;
   outline: none;
   cursor: pointer;
   background: transparent;
-  color: ${props => props.theme.backgroundWhite};
+  color: ${(props) => props.theme.backgroundWhite};
   text-decoration: none;
   font-weight: 500;
 `;

@@ -16,7 +16,8 @@ export default class MyDocument extends Document<DocumentInitialProps> {
     try {
       ctx.renderPage = () =>
         originalRenderPage({
-          enhanceApp: App => props => sheet.collectStyles(<App {...props} />),
+          enhanceApp: (App) => (props) =>
+            sheet.collectStyles(<App {...props} />),
         });
 
       const initialProps = await Document.getInitialProps(ctx);
@@ -37,24 +38,25 @@ export default class MyDocument extends Document<DocumentInitialProps> {
 
   render = () => {
     return (
-      <Html lang='zh-TW'>
+      <Html lang="zh-TW">
         <Head
-          prefix='og: http://ogp.me/ns#'
+          prefix="og: http://ogp.me/ns#"
           itemScope
-          itemType='https://schema.org/WebSite'>
-          <meta charSet='utf-8' />
-          <meta httpEquiv='X-UA-Compatible' content='IE=edge' />
+          itemType="https://schema.org/WebSite"
+        >
+          <meta charSet="utf-8" />
+          <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
 
           <meta
-            name='apple-mobile-web-app-status-bar-style'
-            content='default'
+            name="apple-mobile-web-app-status-bar-style"
+            content="default"
           />
 
-          <meta name='theme-color' content='#006aa6' />
-          <meta name='mobile-web-app-capable' content='yes' />
-          <meta name='apple-mobile-web-app-capable' content='yes' />
+          <meta name="theme-color" content="#006aa6" />
+          <meta name="mobile-web-app-capable" content="yes" />
+          <meta name="apple-mobile-web-app-capable" content="yes" />
           {/* https://github.com/whatwg/html/issues/4504 */}
-          <meta name='supported-color-schemes' content='light' />
+          <meta name="supported-color-schemes" content="light" />
         </Head>
         <body>
           <Main />

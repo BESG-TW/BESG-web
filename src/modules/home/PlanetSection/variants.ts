@@ -1,22 +1,22 @@
 export const fadeLeft = {
   hidden: { opacity: 0, x: -100 },
-  visible: { opacity: 1, x: 0 }
+  visible: { opacity: 1, x: 0 },
 };
 
 export const fadeIn = {
   hidden: { opacity: 0 },
-  visible: { opacity: 1, transition: { duration: 1 }}
-}
+  visible: { opacity: 1, transition: { duration: 1 } },
+};
 
 export const buttonHover = {
   hover: {
     color: '#000000',
     backgroundColor: '#ffffff',
     transition: {
-      duration: 0.2
-    }
-  }
-}
+      duration: 0.2,
+    },
+  },
+};
 
 export const planetVariant = {
   hover: {
@@ -24,17 +24,21 @@ export const planetVariant = {
     cursor: 'pointer',
     transition: {
       duration: 0.7,
-      yoyo: Infinity
-    }
+      yoyo: Infinity,
+    },
   },
   initial: {
     opacity: 1,
-    x: 0
+    x: 0,
   },
   rotateLeft: {
-    rotate: -360, cursor: 'pointer', transition: { duration: 32, loop: Infinity, ease: 'linear' }
+    rotate: -360,
+    cursor: 'pointer',
+    transition: { duration: 32, loop: Infinity, ease: 'linear' },
   },
   rotateRight: {
-    rotate: 360, cursor: 'pointer', transition: { duration: 20, loop: Infinity, ease: 'linear' }
-  }
-}
+    rotate: 360,
+    cursor: 'pointer',
+    transition: { duration: 20, loop: Infinity, ease: 'linear' },
+  },
+};

@@ -1,5 +1,4 @@
-
-import { redis } from "./redis";
+import { redis } from './redis';
 
 const fetch = async <T>(key: string, fetcher: () => T, expires: number) => {
   const existing = await get<T>(key);
@@ -15,7 +14,7 @@ const get = async <T>(key: string): Promise<T> => {
 
 const set = async <T>(key: string, fetcher: () => T, expires: number) => {
   const value = await fetcher();
-  await redis.set(key, JSON.stringify(value), "EX", expires);
+  await redis.set(key, JSON.stringify(value), 'EX', expires);
   return value;
 };
 

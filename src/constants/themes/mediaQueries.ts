@@ -1,10 +1,13 @@
 import { css } from 'styled-components';
 
-const makeCss = (size: number) => (...args: any[]) => css`
-  @media (max-width: ${size}px) {
-    ${(css as any)(...args)};
-  }
-`;
+const makeCss =
+  (size: number) =>
+  (...args: any[]) =>
+    css`
+      @media (max-width: ${size}px) {
+        ${(css as any)(...args)};
+      }
+    `;
 
 export const MediaQueries = {
   mobileS: makeCss(320),
