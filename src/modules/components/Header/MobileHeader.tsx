@@ -35,7 +35,7 @@ const MobileHeader: React.FC = () => {
                 <MenuItem>分享列表 Session List 🔥</MenuItem>
               </Link>
               <Link href="/contact">
-                <MenuItem>聯絡我們 🎸</MenuItem>
+                <MenuItem>聯絡我們 🎃</MenuItem>
               </Link>
               <LogoWrapper>
                 <Logo src="/besg.png" size={180} />
