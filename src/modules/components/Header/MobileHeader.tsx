@@ -28,11 +28,11 @@ const MobileHeader: React.FC = () => {
               X
             </MenuToggleBtn>
             <MenuItemsWrapper>
-              <Link href="/latestSession">
-                <MenuItem>本週 Session 🚀</MenuItem>
+              <Link href="/about">
+                <MenuItem>關於 BESG 🚀</MenuItem>
               </Link>
               <Link href="/sharingList">
-                <MenuItem>分享列表 🔥</MenuItem>
+                <MenuItem>分享列表 Session List 🔥</MenuItem>
               </Link>
               <Link href="/contact">
                 <MenuItem>聯絡我們 🎸</MenuItem>

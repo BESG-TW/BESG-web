@@ -12,7 +12,7 @@ const DesktopHeader: React.FC = () => {
         <Logo src="/besg.png" />
       </Link>
       <LinkWrapper>
-        <Link href="/latestSession">
+        <Link href="/about">
           <LinkItem
             variants={buttonHover}
             whileHover="hover"
@@ -20,7 +20,7 @@ const DesktopHeader: React.FC = () => {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.3 }}
           >
-            本週 Session
+            關於 BESG
           </LinkItem>
         </Link>
         <Link href="/sharingList">
@@ -31,7 +31,7 @@ const DesktopHeader: React.FC = () => {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.3 }}
           >
-            分享列表
+            分享列表 Session List
           </LinkItem>
         </Link>
         <Link href="/contact">
