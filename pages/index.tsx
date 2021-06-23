@@ -1,8 +1,15 @@
+import { useEffect } from 'react';
 import styled from 'styled-components';
 
 import PlanetSection from '@/modules/home/PlanetSection/PlanetSection';
 
 export default function Home() {
+  useEffect(() => {
+    fetch('/api/latestSession')
+      .then((res) => res.json())
+      .then((data) => console.log(data));
+  }, []);
+
   return (
     <Wrapper>
       <PlanetSection />
