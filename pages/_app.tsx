@@ -1,12 +1,28 @@
 import { useEffect } from 'react';
 import { AppContext, AppInitialProps, AppProps } from 'next/app';
 import { NextComponentType } from 'next';
+import { Router } from 'next/router';
+import NProgress from 'nprogress';
+import 'nprogress/nprogress.css';
 
 import DynamicTheme from '@/constants/themes/DynamicTheme';
 import Meta from '@/modules/meta/Meta';
 import DesktopHeader from '@/modules/components/Header/DesktopHeader';
 import MobileHeader from '@/modules/components/Header/MobileHeader';
 import useWindowSize from '@/hooks/useWindowSize';
+import { DESKTOP_WIDTH_BREAKPOINT } from '@/constants';
+
+Router.events.on('routeChangeStart', () => {
+  NProgress.start();
+});
+
+Router.events.on('routeChangeComplete', () => {
+  NProgress.done();
+});
+
+Router.events.on('routeChangeError', () => {
+  NProgress.done();
+});
 
 const AppComponent: NextComponentType<AppContext, AppInitialProps, AppProps> =
   ({ Component, pageProps }) => {
@@ -33,7 +49,11 @@ const AppComponent: NextComponentType<AppContext, AppInitialProps, AppProps> =
     return (
       <DynamicTheme>
         <Meta />
-        {width > 768 ? <DesktopHeader /> : <MobileHeader />}
+        {width > DESKTOP_WIDTH_BREAKPOINT ? (
+          <DesktopHeader />
+        ) : (
+          <MobileHeader />
+        )}
         <Component {...pageProps} />
       </DynamicTheme>
     );
