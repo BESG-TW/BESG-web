@@ -56,7 +56,7 @@ const PlanetSection: React.FC = () => {
             alt="planet"
             whileTap={{ scale: 0.9 }}
             drag={true}
-            dragConstraints={{ left: 0, right: 250, top: 0, bottom: 50 }}
+            dragConstraints={{ left: 30, right: 250, top: 50, bottom: 50 }}
             initial="initial"
             animate="rotateLeft"
             variants={planetVariant}
@@ -67,7 +67,7 @@ const PlanetSection: React.FC = () => {
             alt="planet"
             whileTap={{ scale: 0.6 }}
             drag={true}
-            dragConstraints={{ left: -200, right: 0, top: 0, bottom: 50 }}
+            dragConstraints={{ left: -200, right: -50, top: -50, bottom: 50 }}
             initial="initial"
             animate="rotateRight"
             variants={planetVariant}
@@ -78,7 +78,7 @@ const PlanetSection: React.FC = () => {
             alt="planet"
             whileTap={{ scale: 0.8 }}
             drag={true}
-            dragConstraints={{ left: -30, right: 250, top: 0, bottom: 50 }}
+            dragConstraints={{ left: -30, right: 250, top: 100, bottom: 50 }}
             initial="initial"
             animate="rotateRight"
             variants={planetVariant}
@@ -89,7 +89,7 @@ const PlanetSection: React.FC = () => {
             alt="planet"
             whileTap={{ scale: 0.9 }}
             drag={true}
-            dragConstraints={{ left: -100, right: 0, top: 0, bottom: 0 }}
+            dragConstraints={{ left: -100, right: 50, top: -100, bottom: 0 }}
             initial="initial"
             animate="rotateLeft"
             variants={planetVariant}
@@ -118,7 +118,8 @@ const Container = styled.div`
   padding: 3rem calc((100vw - 1300px) / 2);
 
   ${(props) => props.theme.tablet`
-    grid-grid-template-columns: 1fr;
+    display: flex;
+    max-width: 100vw;
   `}
 `;
 
@@ -140,6 +141,10 @@ const ColumnLeft = styled.div`
     font-size: 4rem;
     line-height: 1.1;
   }
+
+  ${(props) => props.theme.tablet`
+    z-index: 99;
+  `}
 `;
 
 const Button = styled(motion.a)`
@@ -197,6 +202,13 @@ const ColumnRight = styled.div`
     right: 75px;
     z-index: 3;
   }
+
+  ${(props) => props.theme.tablet`
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    padding: 0;
+  `}
 `;
 
 const TitleWrapper = styled.div`
