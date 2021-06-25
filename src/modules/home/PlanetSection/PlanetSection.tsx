@@ -144,6 +144,7 @@ const ColumnLeft = styled.div`
 
   ${(props) => props.theme.tablet`
     z-index: 99;
+    padding: 5rem 2rem 5rem 2rem;
   `}
 `;
 
