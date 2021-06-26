@@ -29,13 +29,19 @@ const MobileHeader: React.FC = () => {
             </MenuToggleBtn>
             <MenuItemsWrapper>
               <Link href="/about">
-                <MenuItem>關於 BESG 🚀</MenuItem>
+                <MenuItem onClick={() => setIsMenuOpen(false)}>
+                  關於 BESG 🚀
+                </MenuItem>
               </Link>
               <Link href="/sharingList">
-                <MenuItem>分享列表 Session List 🔥</MenuItem>
+                <MenuItem onClick={() => setIsMenuOpen(false)}>
+                  分享列表 Session List 🔥
+                </MenuItem>
               </Link>
               <Link href="/contact">
-                <MenuItem>聯絡我們 🎃</MenuItem>
+                <MenuItem onClick={() => setIsMenuOpen(false)}>
+                  聯絡我們 🎃
+                </MenuItem>
               </Link>
               <LogoWrapper>
                 <Logo src="/besg.png" size={180} />
