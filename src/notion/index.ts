@@ -11,6 +11,7 @@ export interface RequestParameters {
   body?: Record<string, unknown>;
   auth?: string;
 }
+
 // Init Client
 export const notionClient = new Client({
   auth: process.env.NOTION_TOKEN,
