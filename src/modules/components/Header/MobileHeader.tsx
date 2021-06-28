@@ -30,17 +30,17 @@ const MobileHeader: React.FC = () => {
             <MenuItemsWrapper>
               <Link href="/about">
                 <MenuItem onClick={() => setIsMenuOpen(false)}>
-                  關於 BESG 🚀
+                  關於 BESG
                 </MenuItem>
               </Link>
               <Link href="/sharingList">
                 <MenuItem onClick={() => setIsMenuOpen(false)}>
-                  分享列表 Session List 🔥
+                  分享列表 Session List
                 </MenuItem>
               </Link>
               <Link href="/contact">
                 <MenuItem onClick={() => setIsMenuOpen(false)}>
-                  聯絡我們 🎃
+                  聯絡我們
                 </MenuItem>
               </Link>
               <LogoWrapper>
@@ -126,6 +126,8 @@ const MenuItem = styled.div`
   justify-content: center;
   align-items: center;
   cursor: pointer;
+  font-size: 1.02rem;
+  color: rgba(0, 0, 0, 0.7);
 `;
 
 export default MobileHeader;

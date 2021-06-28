@@ -4,6 +4,6 @@ export default {
     backgroundBlack: 'black',
     red: 'red',
     borderDarkGray: 'rgba(0,0,0,0.7)',
-    borderLightGray: 'rgba(0,0,0,0.3)',
+    borderLightGray: 'rgba(0,0,0,0.1)',
   },
 };
