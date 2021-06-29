@@ -6,7 +6,7 @@ const fetch = async <T>(key: string, fetcher: () => T, expires: number) => {
   return set(key, fetcher, expires);
 };
 
-const get = async <T>(key: string): Promise<T> => {
+const get = async <T>(key: string): Promise<T | null> => {
   const value = await redis.get(key);
   if (value === null) return null;
   return JSON.parse(value);

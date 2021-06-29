@@ -3,20 +3,26 @@ import { NextApiRequest, NextApiResponse } from 'next';
 import { notionClient, RequestParameters } from '@/notion';
 import cache from '@/cache/cache';
 
-const NOTION_DB_MAP: Record<string, string> = {
-  q1: process.env.NOTION_DB_ID_Q1,
-  q2: process.env.NOTION_DB_ID_Q2,
-  q3: process.env.NOTION_DB_ID_Q3,
-};
+enum QUATER {
+  ONE = 'q1',
+  TWO = 'q2',
+  THREE = 'q3',
+}
+export const mapQueryParamsToQuaterString = (query: QUATER) =>
+  ({
+    [QUATER.ONE]: process.env.NOTION_DB_ID_Q1,
+    [QUATER.TWO]: process.env.NOTION_DB_ID_Q2,
+    [QUATER.THREE]: process.env.NOTION_DB_ID_Q3,
+  }[query]);
 
 export default async function latestSession(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  const quater = req.query.quater as string;
-  const notionDBId = NOTION_DB_MAP[quater];
+  const quater = req.query.quater as QUATER;
+  const notionDBId = mapQueryParamsToQuaterString(quater);
 
-  if (!notionDBId) throw new Error('Invalid quarter query parameters');
+  if (!notionDBId) return res.json(null);
 
   const payload: RequestParameters = {
     path: `databases/${notionDBId}/query`,

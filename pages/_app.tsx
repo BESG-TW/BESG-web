@@ -49,7 +49,7 @@ const AppComponent: NextComponentType<AppContext, AppInitialProps, AppProps> =
     return (
       <DynamicTheme>
         <Meta />
-        {width > DESKTOP_WIDTH_BREAKPOINT ? (
+        {width && width > DESKTOP_WIDTH_BREAKPOINT ? (
           <DesktopHeader />
         ) : (
           <MobileHeader />
