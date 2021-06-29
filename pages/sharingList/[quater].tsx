@@ -1,7 +1,6 @@
-import { NextPageContext } from 'next';
 import styled from 'styled-components';
 
-export default function SharingListHome() {
+export default function SharingListQuater() {
   return (
     <Wrapper>
       <img src="/coming-soon.jpeg" />
@@ -9,11 +8,7 @@ export default function SharingListHome() {
   );
 }
 
-export async function getServerSideProps(context: NextPageContext) {
-  return {
-    props: {}, // will be passed to the page component as props
-  };
-}
+// Maybe use getStaticProps
 
 const Wrapper = styled.div`
   min-height: 100vh;

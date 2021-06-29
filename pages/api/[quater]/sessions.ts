@@ -2,12 +2,8 @@ import { NextApiRequest, NextApiResponse } from 'next';
 
 import { notionClient, RequestParameters } from '@/notion';
 import cache from '@/cache/cache';
+import { QUATER } from '@/constants';
 
-enum QUATER {
-  ONE = 'q1',
-  TWO = 'q2',
-  THREE = 'q3',
-}
 export const mapQueryParamsToQuaterString = (query: QUATER) =>
   ({
     [QUATER.ONE]: process.env.NOTION_DB_ID_Q1,
