@@ -17,7 +17,15 @@ export default async function latestSession(
   const fetcher = async () => {
     try {
       const { results } = await notionClient.request(payload);
-      return results[0].properties;
+      const properties = results[0].properties;
+
+      const filteredResult = {
+        date: properties.Date.date.start,
+        topic: properties.topic.rich_text[0].text.content,
+        sharer: properties.sharer.rich_text[0].text.content,
+      };
+
+      return filteredResult;
     } catch (err) {
       throw new Error(err);
     }
@@ -26,7 +34,7 @@ export default async function latestSession(
   const cachedLatestSession = await cache.fetch(
     'latestSession',
     fetcher,
-    60 * 60
+    60 * 60 * 24
   );
 
   res.status(200);

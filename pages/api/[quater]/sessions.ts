@@ -2,7 +2,7 @@ import { NextApiRequest, NextApiResponse } from 'next';
 
 import { notionClient, RequestParameters } from '@/notion';
 import cache from '@/cache/cache';
-import { QUATER } from '@/constants';
+import { QUATER, DEFAULT_TEXT_HOLDER } from '@/constants';
 
 export const mapQueryParamsToQuaterString = (query: QUATER) =>
   ({
@@ -28,7 +28,18 @@ export default async function latestSession(
   const fetcher = async () => {
     try {
       const { results } = await notionClient.request(payload);
-      return results;
+
+      const mappedResult = results.map((result: any) => {
+        return {
+          topic: result.properties.topic.rich_text[0].text.content,
+          date: result.properties.date.date.start,
+          sharer: result.properties.sharer.rich_text[0].text.content,
+          slides: result.properties.slides?.url ?? DEFAULT_TEXT_HOLDER,
+          code: result.properties.code?.url ?? DEFAULT_TEXT_HOLDER,
+        };
+      });
+
+      return mappedResult;
     } catch (err) {
       throw new Error(err);
     }
