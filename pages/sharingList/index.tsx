@@ -1,6 +1,8 @@
 import { NextPageContext } from 'next';
 import styled from 'styled-components';
 
+import { fetchLatestSession } from '@/utils/fetchData';
+
 export default function SharingListHome() {
   return (
     <Wrapper>
@@ -10,6 +12,8 @@ export default function SharingListHome() {
 }
 
 export async function getServerSideProps(context: NextPageContext) {
+  const latestSesstion = await fetchLatestSession();
+
   return {
     props: {}, // will be passed to the page component as props
   };
