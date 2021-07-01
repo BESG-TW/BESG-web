@@ -20,7 +20,7 @@ export default async function latestSession(
       const properties = results[0].properties;
 
       const filteredResult = {
-        date: properties.Date.date.start,
+        date: properties.date.date.start,
         topic: properties.topic.rich_text[0].text.content,
         sharer: properties.sharer.rich_text[0].text.content,
       };
@@ -32,7 +32,7 @@ export default async function latestSession(
   };
 
   const cachedLatestSession = await cache.fetch(
-    'latestSession',
+    'latestSession-v2',
     fetcher,
     60 * 60 * 24
   );
