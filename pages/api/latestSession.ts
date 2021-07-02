@@ -2,6 +2,7 @@ import { NextApiRequest, NextApiResponse } from 'next';
 
 import { notionClient, RequestParameters } from '@/notion';
 import cache from '@/cache/cache';
+import { INotionResponse } from '@/interface/api';
 
 const NOTION_DB_ID_LATEST = process.env.NOTION_DB_ID_LATEST;
 
@@ -16,7 +17,7 @@ export default async function latestSession(
 
   const fetcher = async () => {
     try {
-      const { results } = await notionClient.request(payload);
+      const { results } = await notionClient.request<INotionResponse>(payload);
       const properties = results[0].properties;
 
       const filteredResult = {
@@ -32,7 +33,7 @@ export default async function latestSession(
   };
 
   const cachedLatestSession = await cache.fetch(
-    'latestSession-v2',
+    'latestSession',
     fetcher,
     60 * 60 * 24
   );

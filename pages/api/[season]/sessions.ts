@@ -2,23 +2,24 @@ import { NextApiRequest, NextApiResponse } from 'next';
 
 import { notionClient, RequestParameters } from '@/notion';
 import cache from '@/cache/cache';
-import { QUATER, DEFAULT_TEXT_HOLDER } from '@/constants';
+import { SEASON, DEFAULT_TEXT_HOLDER } from '@/constants';
+import { INotionResponse } from '@/interface/api';
 
-export const mapQueryParamsToQuaterString = (query: QUATER) =>
+export const mapQueryParamsToQuaterString = (query: SEASON) =>
   ({
-    [QUATER.ONE]: process.env.NOTION_DB_ID_Q1,
-    [QUATER.TWO]: process.env.NOTION_DB_ID_Q2,
-    [QUATER.THREE]: process.env.NOTION_DB_ID_Q3,
+    [SEASON.ONE]: process.env.NOTION_DB_ID_S1,
+    [SEASON.TWO]: process.env.NOTION_DB_ID_S2,
+    [SEASON.THREE]: process.env.NOTION_DB_ID_S3,
   }[query]);
 
 export default async function latestSession(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  const quater = req.query.quater as QUATER;
-  const notionDBId = mapQueryParamsToQuaterString(quater);
+  const season = req.query.season as SEASON;
+  const notionDBId = mapQueryParamsToQuaterString(season);
 
-  if (!notionDBId) return res.json(null);
+  if (!notionDBId) return res.status(404).json({});
 
   const payload: RequestParameters = {
     path: `databases/${notionDBId}/query`,
@@ -27,7 +28,7 @@ export default async function latestSession(
 
   const fetcher = async () => {
     try {
-      const { results } = await notionClient.request(payload);
+      const { results } = await notionClient.request<INotionResponse>(payload);
 
       const mappedResult = results.map((result: any) => {
         return {
@@ -45,12 +46,12 @@ export default async function latestSession(
     }
   };
 
-  const cachedQuaterSession = await cache.fetch(
-    `quater-${quater}`,
+  const cachedSeasonSession = await cache.fetch(
+    `season-${season}`,
     fetcher,
     60 * 60 * 24
   );
 
   res.status(200);
-  return res.json({ results: cachedQuaterSession });
+  return res.json({ results: cachedSeasonSession });
 }

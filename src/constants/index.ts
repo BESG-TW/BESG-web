@@ -3,8 +3,8 @@ export const DESKTOP_WIDTH_BREAKPOINT = 768;
 
 export const DEFAULT_TEXT_HOLDER = '--';
 
-export enum QUATER {
-  ONE = 'q1',
-  TWO = 'q2',
-  THREE = 'q3',
+export enum SEASON {
+  ONE = 's1',
+  TWO = 's2',
+  THREE = 's3',
 }
