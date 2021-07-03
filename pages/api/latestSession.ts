@@ -38,6 +38,7 @@ export default async function latestSession(
     60 * 60 * 24
   );
 
+  res.setHeader('Cache-Control', 's-maxage=60, stale-while-revalidate');
   res.status(200);
   return res.json({ latestSession: cachedLatestSession });
 }
