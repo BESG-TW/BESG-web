@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { AppContext, AppInitialProps, AppProps } from 'next/app';
 import { NextComponentType } from 'next';
-import { Router } from 'next/router';
+import { Router, useRouter } from 'next/router';
 import NProgress from 'nprogress';
 import 'nprogress/nprogress.css';
 
@@ -11,6 +11,7 @@ import DesktopHeader from '@/modules/components/Header/DesktopHeader';
 import MobileHeader from '@/modules/components/Header/MobileHeader';
 import useWindowSize from '@/hooks/useWindowSize';
 import { DESKTOP_WIDTH_BREAKPOINT } from '@/constants';
+import * as gtag from '@/utils/analysis';
 
 Router.events.on('routeChangeStart', () => {
   NProgress.start();
@@ -27,6 +28,18 @@ Router.events.on('routeChangeError', () => {
 const AppComponent: NextComponentType<AppContext, AppInitialProps, AppProps> =
   ({ Component, pageProps }) => {
     const { width } = useWindowSize();
+    const router = useRouter();
+
+    useEffect(() => {
+      const handleRouteChange = (url: string) => {
+        gtag.pageview(url);
+      };
+      router.events.on('routeChangeComplete', handleRouteChange);
+
+      return () => {
+        router.events.off('routeChangeComplete', handleRouteChange);
+      };
+    }, [router.events]);
 
     useEffect(() => {
       if ('serviceWorker' in navigator) {
