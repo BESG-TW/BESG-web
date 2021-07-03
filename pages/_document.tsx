@@ -8,6 +8,8 @@ import Document, {
 } from 'next/document';
 import { ServerStyleSheet } from 'styled-components';
 
+import { GA_TRACKING_ID } from '@/utils/analysis';
+
 export default class MyDocument extends Document<DocumentInitialProps> {
   static async getInitialProps(ctx: DocumentContext) {
     const sheet = new ServerStyleSheet();
@@ -57,6 +59,24 @@ export default class MyDocument extends Document<DocumentInitialProps> {
           <meta name="apple-mobile-web-app-capable" content="yes" />
           {/* https://github.com/whatwg/html/issues/4504 */}
           <meta name="supported-color-schemes" content="light" />
+          {/* Global Site Tag (gtag.js) - Google Analytics */}
+          <script
+            async
+            src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}
+          />
+          <script
+            // eslint-disable-next-line react/no-danger
+            dangerouslySetInnerHTML={{
+              __html: `
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', '${GA_TRACKING_ID}', {
+              page_path: window.location.pathname,
+            });
+          `,
+            }}
+          />
         </Head>
         <body>
           <Main />
