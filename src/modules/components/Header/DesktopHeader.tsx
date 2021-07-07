@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 
-import { buttonHover } from '@/modules/home/PlanetSection/variants';
+import { buttonHover } from '@/constants/themes/motion';
 
 const DesktopHeader: React.FC = () => {
   return (
