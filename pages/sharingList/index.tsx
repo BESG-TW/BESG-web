@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 
 import { fetchLatestSession } from '@/utils/fetchData';
 import { fadeIn, fadeLeft, buttonHover } from '@/constants/variants/motion';
+import { SEASON } from '@/constants';
 
 type Props = {
   latestSession: {
@@ -17,15 +18,15 @@ type Props = {
 
 const seasons = [
   {
-    id: 's3',
+    id: SEASON.THREE,
     name: 'Season 3',
   },
   {
-    id: 's2',
+    id: SEASON.TWO,
     name: 'Season 2',
   },
   {
-    id: 's1',
+    id: SEASON.ONE,
     name: 'Season 1',
   },
 ];
