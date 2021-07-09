@@ -1,5 +1,5 @@
 <p align="center">
-   <img src="./public/icon-256x256.png" alt="Logo" height="80">
+   <img src="./public/icon-256x256.png" alt="Logo" height="150">
    <h3 align="center">BESG Official 🔥</h3>
 </p>
 <p align="center">
@@ -13,7 +13,7 @@
 Official website of BESG - an online web development sharing group, sharing web technologies including frontend, backend, cloud and DevOps every week.
 
 Sharing Time: 9:30 PM ervey week @Discord
-Site URL : https://besg-official.vercel.app/
+Site URL : https://besg-web.vercel.app/
 
 ## Dependency
 
