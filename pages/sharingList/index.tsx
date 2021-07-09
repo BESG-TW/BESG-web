@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { motion } from 'framer-motion';
 
 import { fetchLatestSession } from '@/utils/fetchData';
-import { fadeIn, fadeLeft, buttonHover } from '@/constants/themes/motion';
+import { fadeIn, fadeLeft, buttonHover } from '@/constants/variants/motion';
 
 type Props = {
   latestSession: {

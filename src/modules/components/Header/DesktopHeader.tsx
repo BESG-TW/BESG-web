@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 
-import { buttonHover } from '@/constants/themes/motion';
+import { buttonHover } from '@/constants/variants/motion';
 
 const DesktopHeader: React.FC = () => {
   return (
