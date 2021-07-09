@@ -12,6 +12,7 @@
 Official website of BESG - an online web development sharing group, sharing web technologies including frontend, backend, cloud and DevOps every week.
 
 Sharing Time: 9:30 PM ervey week @Discord
+
 Site URL : https://besg-web.vercel.app/
 
 ## Dependency
