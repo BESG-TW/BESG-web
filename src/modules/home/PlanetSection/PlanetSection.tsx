@@ -1,9 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
-
-import { fadeLeft, buttonHover, planetVariant, fadeIn } from './variants';
+import { fadeIn, fadeLeft, buttonHover } from '@/constants/variants/motion';
 import { DISCORD_INVITATION_LINK } from '@/constants';
+
+import { planetVariant } from './variants';
 
 const PlanetSection: React.FC = () => {
   return (
